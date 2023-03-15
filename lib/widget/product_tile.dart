@@ -17,9 +17,9 @@ class ProductTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 150,
+        height: 170,
         decoration: BoxDecoration(
           color: Colors.brown.shade100,
           borderRadius: const BorderRadius.only(
@@ -37,7 +37,7 @@ class ProductTile extends StatelessWidget {
                   const EdgeInsets.only(left: 5, top: 10, bottom: 10, right: 5),
               //Imagen del producto
               child: Container(
-                width: 150,
+                width: 170,
                 height: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.black,
@@ -79,10 +79,19 @@ class ProductTile extends StatelessWidget {
                     const SizedBox(
                       height: 5,
                     ),
-                    Text(
-                      "\$ $price",
-                      style: GoogleFonts.lilitaOne(
-                          fontSize: 20, color: Colors.brown.shade700),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.brown.shade300,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "\$ $price",
+                          style: GoogleFonts.lilitaOne(
+                              fontSize: 23, color: Colors.orange.shade100),
+                        ),
+                      ),
                     ),
                   ],
                 ),

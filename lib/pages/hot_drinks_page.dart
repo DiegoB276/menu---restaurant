@@ -25,29 +25,26 @@ class _HotDrinksPageState extends State<HotDrinksPage> {
         centerTitle: true,
       ),
       drawer: const MyDrawer(),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
-        child: ListView.builder(
-          itemCount: listHotDrinks.length,
-          itemBuilder: (BuildContext context, int index) {
-            Food food = listHotDrinks[index];
-            return InkWell(
-              onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => DetailsPage(food: food),
-                  ),
-                );
-              },
-              child: ProductTile(
-                name: food.foodName,
-                description: food.description,
-                price: food.price,
-                pathImage: food.pathImage,
-              ),
-            );
-          },
-        ),
+      body: ListView.builder(
+        itemCount: listHotDrinks.length,
+        itemBuilder: (BuildContext context, int index) {
+          Food food = listHotDrinks[index];
+          return InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => DetailsPage(food: food),
+                ),
+              );
+            },
+            child: ProductTile(
+              name: food.foodName,
+              description: food.description,
+              price: food.price,
+              pathImage: food.pathImage,
+            ),
+          );
+        },
       ),
     );
   }

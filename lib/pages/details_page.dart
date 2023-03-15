@@ -9,7 +9,7 @@ class DetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 100, 69, 43),
         elevation: 0,
         title: Text(
@@ -17,24 +17,50 @@ class DetailsPage extends StatelessWidget {
           style: GoogleFonts.kalam(fontSize: 30, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-      ),
+      ),*/
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 300,
-              width: MediaQuery.of(context).size.width,
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
+            Stack(
+              children: [
+                SizedBox(
+                  height: 350,
+                  width: MediaQuery.of(context).size.width,
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                    child: Image.asset(
+                      food.pathImage,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
                 ),
-                child: Image.asset(
-                  food.pathImage,
-                  fit: BoxFit.fill,
+                Positioned(
+                  top: 40,
+                  left: 10,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(3),
+                        child: Icon(
+                          Icons.arrow_back_rounded,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
             const SizedBox(
               height: 40,
@@ -42,10 +68,10 @@ class DetailsPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    "Descripción.",
+                    food.foodName,
                     style: GoogleFonts.rowdies(
                       fontSize: 35,
                     ),
@@ -64,15 +90,16 @@ class DetailsPage extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Text(
-                    "Precio.",
-                    style: GoogleFonts.rowdies(
-                      fontSize: 30,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Column(
+                children: [
                   Container(
                     decoration: BoxDecoration(
                         color: Colors.black,
